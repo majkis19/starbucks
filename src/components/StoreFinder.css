@@ -1,0 +1,188 @@
+/* ── Store Finder ───────────────────────────────────────── */
+.store-finder {
+  padding: 7rem 0;
+  background: var(--cream-warm);
+}
+.store-finder__header { text-align: center; margin-bottom: 3.5rem; }
+.store-finder__title { font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.1; }
+.store-finder__sub {
+  max-width: 480px;
+  margin: 1rem auto 0;
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.store-finder__layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 2rem;
+  height: 560px;
+}
+
+/* Search */
+.store-finder__panel { display: flex; flex-direction: column; gap: 1rem; }
+.store-finder__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.store-finder__search-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.store-finder__input {
+  width: 100%;
+  padding: 0.85rem 1rem 0.85rem 2.75rem;
+  border-radius: var(--pill-radius);
+  border: 2px solid var(--green-light);
+  background: var(--white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.store-finder__input:focus {
+  border-color: var(--green-primary);
+  box-shadow: 0 0 0 3px rgba(0, 112, 74, 0.1);
+}
+.store-finder__input::placeholder { color: var(--text-muted); }
+
+/* List */
+.store-finder__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 0.25rem;
+}
+.store-finder__list::-webkit-scrollbar { width: 4px; }
+.store-finder__list::-webkit-scrollbar-thumb { background: var(--green-light); border-radius: 100px; }
+
+/* Store Card */
+.store-finder__card {
+  background: var(--white);
+  border-radius: 1.25rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s var(--transition);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.store-finder__card:hover { border-color: var(--green-light); }
+.store-finder__card--active {
+  border-color: var(--green-primary);
+  box-shadow: 0 8px 30px rgba(0, 112, 74, 0.12);
+}
+.store-finder__card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.store-finder__card-name {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  margin-bottom: 0.2rem;
+}
+.store-finder__card-addr { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+.store-finder__card-dist {
+  font-size: 0.72rem;
+  color: var(--green-primary);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+}
+.store-finder__card-meta { margin: 0.4rem 0; }
+.store-finder__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.store-finder__status--open { color: var(--green-primary); }
+.store-finder__status--closed { color: #d97706; }
+.store-finder__status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+.store-finder__card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+.store-finder__feature {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background: var(--green-light);
+  color: var(--green-dark);
+  padding: 0.22rem 0.6rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+.store-finder__card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--cream);
+}
+.store-finder__btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+.store-finder__btn-nav {
+  background: var(--charcoal);
+  color: white;
+  border: none;
+}
+.store-finder__btn-nav:hover { background: #333; }
+
+/* Map */
+.store-finder__map {
+  border-radius: 1.75rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+.store-finder__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: sepia(15%) saturate(90%);
+}
+.store-finder__map-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .store-finder__layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .store-finder__map { height: 300px; }
+  .store-finder__panel { max-height: 500px; }
+}
